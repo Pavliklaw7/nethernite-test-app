@@ -1,3 +1,7 @@
 module.exports = {
-  publicPath:'/nethernite-test-app/'
+  publicPath:'/nethernite-test-app/',
+
+  transpileDependencies: [
+    'vuetify'
+  ]
 }
