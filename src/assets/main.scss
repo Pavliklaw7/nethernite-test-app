@@ -1,5 +1,26 @@
+p {
+  margin: 0;
+}
+
+.v-card__text {
+  padding: 40px !important;
+}
+
+.v-card__text div p:first-child {
+  margin: 0;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
 .v-toolbar {
   flex: none !important;
+}
+
+.v-data-table__wrapper {
+  height: 100%;
+  border-top: 1px solid #dddddd;
 }
 
 table th + th { 
@@ -10,6 +31,29 @@ table td + td {
   border-left: 1px solid #dddddd;
 }
 
+table {
+  height: 100%;
+}
+
+tbody {
+  height: 100%;
+}
+
 tbody tr td {
   height: auto !important;
+}
+
+tbody tr td:first-child {
+  font-weight: 600;
+}
+
+.table-wrapper,
+.v-data-table {
+  height: 90%;
+}
+
+@media(max-width: 600px) {
+  .v-data-table__mobile-row__cell {
+    width: 50%;
+  }
 }

@@ -1,15 +1,20 @@
 <template>
-  <v-data-table
-    v-if="packs.length"
-    :headers="headers"
-    :items="packs"
-    :items-per-page="10"
-    loading-text="Loading... Please wait"
-    class="elevation-1"
-  ></v-data-table>
+  <div class="table-wrapper">
+    <v-data-table
+      v-if="packs.length"
+      :headers="headers"
+      :items="packs"
+      :items-per-page="10"
+      loading-text="Loading... Please wait"
+      class="elevation-1"
+      @click:row="openPackage"
+    ></v-data-table>
+  </div>
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   data() {
     return {
@@ -23,8 +28,20 @@ export default {
         },
         { text: "Description", value: "package.description" },
         { text: "Tags", value: "package.keywords" }
-      ]
+      ],
+      pack: {
+        type: Object,
+        required: true
+      }
     };
+  },
+  methods: {
+    ...mapMutations(["setCurrentPackage", "showDialog", "hideDialog"]),
+    openPackage(value) {
+      console.log("value", JSON.parse(JSON.stringify(value)));
+      this.setCurrentPackage(JSON.parse(JSON.stringify(value)));
+      this.showDialog();
+    }
   },
   computed: {
     packs() {
