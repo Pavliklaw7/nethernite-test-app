@@ -1,28 +1,37 @@
 <template>
-  <v-toolbar dense>
-    <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
-    <v-toolbar-title>Title</v-toolbar-title>
+  <v-toolbar flat>
+    <v-toolbar-title>NPM Package Searcher</v-toolbar-title>
 
     <v-spacer></v-spacer>
 
-    <v-btn icon>
-      <v-icon>mdi-magnify</v-icon>
-    </v-btn>
-
-    <v-btn icon>
-      <v-icon>mdi-heart</v-icon>
-    </v-btn>
-
-    <v-btn icon>
-      <v-icon>mdi-dots-vertical</v-icon>
-    </v-btn>
+    <v-text-field
+      class="mt-1"
+      label="Search the package"
+      @input="searchInput"
+      v-model.trim="inputValue"
+    ></v-text-field>
   </v-toolbar>
 </template>
 
 <script>
-export default {};
+import { debounce } from "debounce";
+
+export default {
+  data() {
+    return {
+      inputValue: ""
+    };
+  },
+  methods: {
+    searchInput: debounce(function() {
+      this.$store.dispatch("fetchPackages", this.inputValue);
+    }, 800)
+  }
+};
 </script>
 
 <style>
+.v-text-field__details {
+  display: none !important;
+}
 </style>

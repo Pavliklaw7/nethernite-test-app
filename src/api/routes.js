@@ -1,7 +1,2 @@
-import axios from 'axios'
 
-const axiosInstance = axios.create({
-  baseURL: 'https://rickandmortyapi.com/api',
-});
-
-export default axiosInstance;
+export const PACKAGES_BY_QUERY = (query) => `/-/v1/search?text=${query}`;

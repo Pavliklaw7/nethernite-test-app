@@ -1,0 +1,15 @@
+.v-toolbar {
+  flex: none !important;
+}
+
+table th + th { 
+  border-left:1px solid #dddddd;
+}
+
+table td + td {
+  border-left: 1px solid #dddddd;
+}
+
+tbody tr td {
+  height: auto !important;
+}
